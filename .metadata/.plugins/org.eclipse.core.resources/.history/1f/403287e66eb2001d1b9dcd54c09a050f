@@ -1,0 +1,27 @@
+public class ConversorMonedas {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double tasaDolarAEuro = 0.82;
+        double tasaEuroADolar = 1.22;
+
+        System.out.println("Bienvenido al conversor de monedas");
+        System.out.println("1 - Dólar a Euro");
+        System.out.println("2 - Euro a Dólar");
+        System.out.print("Elige una opción: ");
+        int opcion = sc.nextInt();
+
+        if (opcion == 1) {
+            System.out.print("Introduce la cantidad de dólares a convertir: ");
+            double dolares = sc.nextDouble();
+            double euros = dolares * tasaDolarAEuro;
+            System.out.printf("%.2f dólares son %.2f euros", dolares, euros);
+        } else if (opcion == 2) {
+            System.out.print("Introduce la cantidad de euros a convertir: ");
+            double euros = sc.nextDouble();
+            double dolares = euros * tasaEuroADolar;
+            System.out.printf("%.2f euros son %.2f dólares", euros, dolares);
+        } else {
+            System.out.println("Opción no válida");
+        }
+    }
+}

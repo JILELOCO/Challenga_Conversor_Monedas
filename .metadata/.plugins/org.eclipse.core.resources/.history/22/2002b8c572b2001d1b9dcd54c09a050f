@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class ConversorMonedas {
+	public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double cantidad, resultado;
+        int opcion;
+
+        System.out.println("Bienvenido al conversor de divisas\n");
+        System.out.println("1. Euro");
+        System.out.println("2. Dólar");
+        System.out.println("3. Peso mexicano\n");
+
+        System.out.print("Ingrese la cantidad a convertir: ");
+        cantidad = sc.nextDouble();
+
+        System.out.print("Ingrese la divisa original (1-3): ");
+        opcion = sc.nextInt();
+
+        switch (opcion) {
+            case 1:
+                resultado = cantidad * 1.21;
+                System.out.printf("%.2f euros son %.2f dólares\n", cantidad, resultado);
+                resultado = cantidad * 25.67;
+                System.out.printf("%.2f euros son %.2f pesos mexicanos\n", cantidad, resultado);
+                break;
+            case 2:
+                resultado = cantidad * 0.83;
+                System.out.printf("%.2f dólares son %.2f euros\n", cantidad, resultado);
+                resultado = cantidad * 21.31;
+                System.out.printf("%.2f dólares son %.2f pesos mexicanos\n", cantidad, resultado);
+                break;
+            case 3:
+                resultado = cantidad * 0.039;
+                System.out.printf("%.2f pesos mexicanos son %.2f euros\n", cantidad, resultado);
+                resultado = cantidad * 0.047;
+                System.out.printf("%.2f pesos mexicanos son %.2f dólares\n", cantidad, resultado);
+                break;
+            default:
+                System.out.println("Opción inválida");
+                break;
+        }
+
+        sc.close();
+    }
+
+}

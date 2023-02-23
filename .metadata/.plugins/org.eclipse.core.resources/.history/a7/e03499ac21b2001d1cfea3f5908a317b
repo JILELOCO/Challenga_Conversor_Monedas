@@ -1,0 +1,33 @@
+package Conversormonedas;
+import java.util.Currency;
+import java.util.Locale;
+import java.util.Scanner;
+
+public class ConversorMonedas {
+	public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Pide al usuario que ingrese la cantidad y la moneda de origen
+        System.out.print("Ingrese la cantidad a convertir: ");
+        double cantidad = input.nextDouble();
+        System.out.print("Ingrese la moneda de origen (ejemplo: USD): ");
+        String monedaOrigen = input.next();
+
+        // Pide al usuario que ingrese la moneda de destino
+        System.out.print("Ingrese la moneda de destino (ejemplo: EUR): ");
+        String monedaDestino = input.next();
+
+        // Obtener las instancias de las monedas de origen y destino
+        Currency monedaOrigenObj = Currency.getInstance(monedaOrigen);
+        Currency monedaDestinoObj = Currency.getInstance(monedaDestino);
+
+        // Obtener la tasa de cambio entre las dos monedas
+        double tasaCambio = monedaOrigenObj.getNumericCode() / monedaDestinoObj.getNumericCode();
+
+        // Convertir la cantidad de la moneda de origen a la moneda de destino
+        double cantidadConvertida = cantidad * tasaCambio;
+
+        // Mostrar el resultado de la conversión
+        System.out.printf("%.2f %s son equivalentes a %.2f %s.", cantidad, monedaOrigenObj.getDisplayName(Locale.getDefault()), cantidadConvertida, monedaDestinoObj.getDisplayName(Locale.getDefault()));
+    }
+}

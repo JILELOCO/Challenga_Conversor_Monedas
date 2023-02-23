@@ -1,0 +1,58 @@
+package ConversorMonedas;
+
+import javax.swing.*;
+import javax.swing.JOptionPane;
+
+public class ConversorMonedas {
+	public static void main(String[] args) {
+		String[] opciones = { "Euro", "Dólar", "Peso Mexicano" };
+		int opcionSeleccionada = JOptionPane.showOptionDialog(null, "Seleccione la divisa que desea convertir:",
+				"Conversor de divisas", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opciones,
+				opciones[0]);
+
+		double tasaConversion = 0;
+		String divisaOrigen = "";
+		switch (opcionSeleccionada) {
+		case 0: // Euro
+			divisaOrigen = "euros";
+			tasaConversion = 1.21;
+			break;
+		case 1: // Dólar
+			divisaOrigen = "dólares";
+			tasaConversion = 0.82;
+			break;
+		case 2: // Peso Mexicano
+			divisaOrigen = "pesos mexicanos";
+			tasaConversion = 0.04;
+			break;
+		default:
+			JOptionPane.showMessageDialog(null, "Debe seleccionar una divisa para continuar.", "Error",
+					JOptionPane.ERROR_MESSAGE);
+			System.exit(0);
+		}
+
+		String cantidadStr = JOptionPane.showInputDialog(null,
+				"Ingrese la cantidad de " + divisaOrigen + " a convertir:", "Conversor de divisas",
+				JOptionPane.PLAIN_MESSAGE);
+		double cantidad = Double.parseDouble(cantidadStr);
+
+		double cantidadConvertida = cantidad * tasaConversion;
+
+		String divisaDestino = "";
+		switch (opcionSeleccionada) {
+		case 0: // Euro
+			divisaDestino = "dólares";
+			break;
+		case 1: // Dólar
+			divisaDestino = "euros";
+			break;
+		case 2: // Peso Mexicano
+			divisaDestino = "euros";
+			break;
+		}
+
+		JOptionPane.showMessageDialog(null,
+				cantidad + " " + divisaOrigen + " son " + cantidadConvertida + " " + divisaDestino,
+				"Conversión exitosa", JOptionPane.PLAIN_MESSAGE);
+	}
+}

@@ -1,0 +1,30 @@
+import java.util.Scanner;
+import org.javamoney.moneta.Money;
+
+public class ConversorMonedas {
+	 public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+
+	        System.out.println("Ingrese la cantidad a convertir:");
+	        double cantidad = scanner.nextDouble();
+
+	        Money monto = Money.of(cantidad, "EUR");
+
+	        System.out.println("Ingrese la divisa a la que desea convertir (USD/MXN):");
+	        String divisa = scanner.next();
+
+	        switch (divisa) {
+	            case "USD":
+	                Money montoConvertido = monto.with(MonetaryConversions.getConversion("USD"));
+	                System.out.println("La cantidad convertida es: " + montoConvertido.getNumber() + " USD");
+	                break;
+	            case "MXN":
+	                montoConvertido = monto.with(MonetaryConversions.getConversion("MXN"));
+	                System.out.println("La cantidad convertida es: " + montoConvertido.getNumber() + " MXN");
+	                break;
+	            default:
+	                System.out.println("La divisa ingresada no es válida");
+	                break;
+	        }
+	    }
+}
